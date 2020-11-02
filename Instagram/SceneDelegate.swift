@@ -25,8 +25,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         Parse.initialize(with: parseConfig)
         
+        if PFUser.current() != nil{
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let feedNavigationController = main.instantiateViewController(identifier: "FeedNavigationController")
+            
+            window?.rootViewController = feedNavigationController
+        }
         
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
